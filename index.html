@@ -10,7 +10,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://themamapod.com">
 <meta property="og:image" content="https://themamapod.com/images/logo.png">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Mama Pod — HypnoBirthing® & Birth Preparation">
+<meta name="twitter:description" content="Prepare for birth feeling calm, confident, and empowered. HypnoBirthing® courses, prenatal yoga, and birth doula support in Los Angeles.">
+<meta name="twitter:image" content="https://themamapod.com/images/logo.png">
+<link rel="canonical" href="https://themamapod.com/">
 <link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -92,7 +100,10 @@
   .nav-links a:hover::after { width: 100%; }
 
   /* Mobile nav */
-  .nav-toggle { display: none; cursor: pointer; }
+  .nav-toggle {
+    display: none; cursor: pointer;
+    background: none; border: none; padding: 0.5rem;
+  }
   .nav-toggle span {
     display: block; width: 24px; height: 2px;
     background: var(--brown); margin: 5px 0;
@@ -153,6 +164,8 @@
   }
   .hero-brand {
     margin-bottom: 0.5rem;
+    font-size: inherit;
+    font-weight: inherit;
   }
   .hero-brand .the {
     font-family: 'Nunito Sans', sans-serif;
@@ -697,6 +710,16 @@
     transform: translateY(0);
   }
 
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -726,7 +749,7 @@
 <body>
 
 <!-- Navigation -->
-<nav id="navbar">
+<nav id="navbar" aria-label="Main">
   <div class="nav-logo">the mama <span>pod</span></div>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
@@ -734,10 +757,12 @@
     <li><a href="#dates">Upcoming Dates</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="nav-toggle" id="navToggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
+
+<main>
 
 <!-- Hero -->
 <section class="hero">
@@ -750,15 +775,15 @@
   <div class="sparkle sparkle-5"></div>
   <div class="hero-content">
     <div class="hero-tagline">Hypnobirthing® Educator & Doula</div>
-    <div class="hero-brand">
-      <span class="the">T H E</span>
-      <div class="mama">mama</div>
+    <h1 class="hero-brand">
+      <span class="the" aria-label="The">T H E</span>
+      <span class="mama">mama</span>
       <span class="pod">POD</span>
-    </div>
+    </h1>
     <p class="hero-subtitle">Prepare for birth feeling calm, confident & empowered</p>
     <a href="#dates" class="hero-cta">View Upcoming Courses</a>
   </div>
-  <div class="scroll-hint">
+  <div class="scroll-hint" aria-hidden="true">
     <span>Explore</span>
     <div class="arrow"></div>
   </div>
@@ -789,7 +814,7 @@
   <div class="about-inner fade-in">
     <div class="about-image">
       <div class="img-frame">
-        <img src="images/mandalay.jpeg" alt="Mandalay Roberts — The Mama Pod">
+        <img src="images/mandalay.jpeg" alt="Mandalay Roberts — The Mama Pod" width="900" height="1200" loading="lazy">
       </div>
       <div class="accent-line"></div>
     </div>
@@ -816,25 +841,25 @@
     <p class="offerings-subtitle">Nurturing support through every stage of your birth journey</p>
     <div class="offerings-grid">
       <div class="offering-card">
-        <span class="offering-icon">&#127769;</span>
+        <span class="offering-icon" aria-hidden="true">&#127769;</span>
         <h3>HypnoBirthing® Course</h3>
         <span class="tag">5-Week Series · Sundays</span>
         <p>A nurturing 5-week hypnobirthing experience where you and your birth partner will learn deep relaxation techniques, breathing methods, visualization, and tools to approach birth with calm confidence. Hosted at Mother Nurture Wellness in Culver City.</p>
       </div>
       <div class="offering-card">
-        <span class="offering-icon">&#129494;&#8205;&#9792;&#65039;</span>
+        <span class="offering-icon" aria-hidden="true">&#129494;&#8205;&#9792;&#65039;</span>
         <h3>Prenatal Yoga</h3>
         <span class="tag">Coming Soon · Angelino Heights</span>
         <p>Connect with your changing body and growing baby through gentle, intentional movement. Classes designed to build strength, flexibility, and community among expecting mothers. Stay tuned for class schedule details.</p>
       </div>
       <div class="offering-card">
-        <span class="offering-icon">&#129309;</span>
+        <span class="offering-icon" aria-hidden="true">&#129309;</span>
         <h3>Birth Doula Support</h3>
         <span class="tag">Personalized Packages</span>
         <p>Continuous emotional, physical, and informational support throughout your pregnancy, labor, and early postpartum. Mandalay works closely with you and your birth team to honor your birth preferences.</p>
       </div>
       <div class="offering-card">
-        <span class="offering-icon">&#128155;</span>
+        <span class="offering-icon" aria-hidden="true">&#128155;</span>
         <h3>Private HypnoBirthing®</h3>
         <span class="tag">Flexible Scheduling</span>
         <p>Prefer a personalized experience? Private sessions offer the full HypnoBirthing® curriculum tailored to your unique needs, schedule, and birth vision. Perfect for couples wanting one-on-one attention.</p>
@@ -901,21 +926,106 @@
   </div>
 </section>
 
+</main>
+
 <!-- Footer -->
 <footer>
   <div class="footer-logo">mama <span>pod</span></div>
   <p>&copy; 2026 The Mama Pod. All rights reserved.</p>
 </footer>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "name": "The Mama Pod",
+      "url": "https://themamapod.com",
+      "email": "info@themamapod.com",
+      "description": "HypnoBirthing® courses, prenatal yoga, and birth doula support in Los Angeles.",
+      "image": "https://themamapod.com/images/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "5855 Green Valley Circle, Suite 200",
+        "addressLocality": "Culver City",
+        "addressRegion": "CA",
+        "postalCode": "90230",
+        "addressCountry": "US"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Mandalay Roberts",
+        "jobTitle": "HypnoBirthing® Educator & Doula",
+        "image": "https://themamapod.com/images/mandalay.jpeg"
+      }
+    },
+    {
+      "@type": "Course",
+      "name": "HypnoBirthing® 5-Week Birth Preparation Course",
+      "description": "A nurturing 5-week hypnobirthing experience where you and your birth partner will learn deep relaxation techniques, breathing methods, visualization, and tools to approach birth with calm confidence.",
+      "provider": { "@type": "ProfessionalService", "name": "The Mama Pod" },
+      "location": {
+        "@type": "Place",
+        "name": "Mother Nurture Wellness",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5855 Green Valley Circle, Suite 200",
+          "addressLocality": "Culver City",
+          "addressRegion": "CA",
+          "postalCode": "90230"
+        }
+      },
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "courseMode": "onsite",
+          "startDate": "2026-05-17",
+          "endDate": "2026-06-14",
+          "courseSchedule": { "@type": "Schedule", "byDay": "Sunday" }
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "onsite",
+          "startDate": "2026-07-12",
+          "endDate": "2026-08-09",
+          "courseSchedule": { "@type": "Schedule", "byDay": "Sunday" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <script>
+  // Navbar scroll effect
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
   });
 
+  // Mobile menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close mobile menu when a link is tapped
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
