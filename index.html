@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mama Pod — HypnoBirthing® & Birth Preparation</title>
+<meta name="description" content="The Mama Pod offers HypnoBirthing® courses, prenatal yoga, and birth doula support in Los Angeles. Prepare for birth feeling calm, confident, and empowered.">
+<meta property="og:title" content="The Mama Pod — HypnoBirthing® & Birth Preparation">
+<meta property="og:description" content="Prepare for birth feeling calm, confident, and empowered. HypnoBirthing® courses, prenatal yoga, and birth doula support in Los Angeles.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://themamapod.com">
+<meta property="og:image" content="https://themamapod.com/images/logo.png">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F2EA;
+    --cream-dark: #EDE6D8;
+    --gold: #D4A843;
+    --gold-light: #E8C96A;
+    --gold-soft: rgba(212, 168, 67, 0.12);
+    --brown: #5C4A32;
+    --brown-light: #8B7355;
+    --sage: #B5C4A8;
+    --sage-soft: rgba(181, 196, 168, 0.2);
+    --blush: #E8D5C4;
+    --text: #3D3226;
+    --text-light: #7A6B5D;
+    --white: #FFFDF9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+    background: transparent;
+  }
+  nav.scrolled {
+    background: rgba(247, 242, 234, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 20px rgba(92, 74, 50, 0.06);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown);
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex; gap: 2.2rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--brown-light);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Mobile nav */
+  .nav-toggle { display: none; cursor: pointer; }
+  .nav-toggle span {
+    display: block; width: 24px; height: 2px;
+    background: var(--brown); margin: 5px 0;
+    transition: all 0.3s;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--white) 0%, var(--cream) 40%, var(--cream-dark) 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(181, 196, 168, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(232, 213, 196, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-arch {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px; height: 560px;
+    border: 1.5px solid rgba(212, 168, 67, 0.2);
+    border-radius: 210px 210px 0 0;
+    pointer-events: none;
+  }
+  .hero-arch-inner {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px; height: 510px;
+    border: 1px solid rgba(212, 168, 67, 0.1);
+    border-radius: 190px 190px 0 0;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 2rem;
+    animation: fadeUp 1.2s ease forwards;
+  }
+  .hero-tagline {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  .hero-brand {
+    margin-bottom: 0.5rem;
+  }
+  .hero-brand .the {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+  }
+  .hero-brand .mama {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 10vw, 7.5rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  .hero-brand .pod {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    display: block;
+    margin-top: 0.2rem;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: var(--brown-light);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 2rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: inline-block;
+    padding: 0.9rem 2.8rem;
+    background: var(--gold);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 0;
+    transition: all 0.3s ease;
+  }
+  .hero-cta:hover {
+    background: var(--brown);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(92, 74, 50, 0.15);
+  }
+  .sparkle {
+    position: absolute;
+    width: 12px; height: 12px;
+    opacity: 0.4;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  .sparkle::before, .sparkle::after {
+    content: ''; position: absolute;
+    background: var(--gold);
+  }
+  .sparkle::before {
+    width: 2px; height: 100%;
+    left: 50%; transform: translateX(-50%);
+  }
+  .sparkle::after {
+    width: 100%; height: 2px;
+    top: 50%; transform: translateY(-50%);
+  }
+  .sparkle-1 { top: 25%; left: 15%; animation-delay: 0s; }
+  .sparkle-2 { top: 35%; right: 18%; animation-delay: 1s; }
+  .sparkle-3 { top: 60%; left: 25%; animation-delay: 2s; }
+  .sparkle-4 { top: 20%; right: 30%; animation-delay: 0.5s; }
+  .sparkle-5 { bottom: 30%; right: 15%; animation-delay: 1.5s; }
+
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem;
+    left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0.5;
+    animation: bounce 2.5s ease infinite;
+  }
+  .scroll-hint span {
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--brown-light);
+  }
+  .scroll-hint .arrow {
+    width: 1px; height: 30px; background: var(--brown-light);
+    position: relative;
+  }
+  .scroll-hint .arrow::after {
+    content: ''; position: absolute;
+    bottom: 0; left: -3px;
+    width: 7px; height: 7px;
+    border-right: 1px solid var(--brown-light);
+    border-bottom: 1px solid var(--brown-light);
+    transform: rotate(45deg);
+  }
+
+  /* ===== INTRO SECTION ===== */
+  .intro {
+    padding: 7rem 2rem;
+    text-align: center;
+    background: var(--white);
+    position: relative;
+  }
+  .intro::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    color: var(--text);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .intro-values {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  .value-item {
+    text-align: center;
+  }
+  .value-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .value-star {
+    color: var(--gold);
+    font-size: 0.7rem;
+    display: block;
+    margin-bottom: 0.3rem;
+    opacity: 0.6;
+  }
+
+  /* ===== ABOUT ===== */
+  .about {
+    padding: 7rem 2rem;
+    background: var(--cream);
+  }
+  .about-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-image {
+    position: relative;
+  }
+  .about-image .img-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--blush);
+    border-radius: 200px 200px 0 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .about-image .img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .about-image .accent-line {
+    position: absolute;
+    bottom: -15px; right: -15px;
+    width: 80%; height: 80%;
+    border: 1px solid var(--gold);
+    border-radius: 160px 160px 0 0;
+    z-index: -1;
+    opacity: 0.3;
+  }
+  .about-text .section-label { text-align: left; }
+  .about-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .about-text h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .about-text p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+  }
+  .credentials {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .credential {
+    padding: 0.5rem 1.2rem;
+    background: var(--gold-soft);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  /* ===== OFFERINGS ===== */
+  .offerings {
+    padding: 7rem 2rem;
+    background: var(--white);
+    text-align: center;
+  }
+  .offerings h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .offerings-subtitle {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto 3.5rem;
+  }
+  .offerings-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .offering-card {
+    background: var(--cream);
+    padding: 3rem 2.5rem;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .offering-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(92, 74, 50, 0.08);
+  }
+  .offering-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--sage));
+  }
+  .offering-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .offering-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .offering-card .tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .offering-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* ===== COURSE DATES ===== */
+  .dates {
+    padding: 7rem 2rem;
+    background: var(--cream);
+    text-align: center;
+    position: relative;
+  }
+  .dates h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .dates-note {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 3rem;
+  }
+  .dates-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .date-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+  .date-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(92, 74, 50, 0.06);
+  }
+  .date-card.active {
+    border-color: var(--gold);
+  }
+  .date-card.active::after {
+    content: 'Now Enrolling';
+    position: absolute; top: -1px; right: -1px;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+  }
+  .date-card .session-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .date-card .dates-range {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .date-card .day {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 0.8rem;
+  }
+  .date-card .location {
+    font-size: 0.75rem;
+    color: var(--brown-light);
+    margin-top: 0.8rem;
+    line-height: 1.5;
+  }
+  .dates-cta {
+    margin-top: 3rem;
+  }
+  .dates-cta a {
+    display: inline-block;
+    padding: 0.9rem 2.8rem;
+    background: var(--gold);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .dates-cta a:hover {
+    background: var(--brown);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(92, 74, 50, 0.15);
+  }
+
+  /* ===== PHILOSOPHY ===== */
+  .philosophy {
+    padding: 7rem 2rem;
+    background: var(--brown);
+    text-align: center;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .philosophy::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(212, 168, 67, 0.1) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 50%, rgba(181, 196, 168, 0.05) 0%, transparent 60%);
+  }
+  .philosophy .section-label { color: var(--gold-light); }
+  .philosophy blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    color: var(--cream);
+  }
+  .philosophy .attribution {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 500;
+    position: relative; z-index: 1;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    padding: 7rem 2rem;
+    background: var(--white);
+    text-align: center;
+  }
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .contact p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+  .contact-email {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: inline-block;
+    position: relative;
+  }
+  .contact-email::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 100%; height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+  }
+  .contact-email:hover { color: var(--brown); }
+  .contact-location {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .contact-location h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .contact-location address {
+    font-style: normal;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 3rem 2rem;
+    background: var(--cream);
+    text-align: center;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .footer-logo span { color: var(--gold); }
+  footer p {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: var(--cream);
+      padding: 2rem;
+      gap: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .hero-arch, .hero-arch-inner { display: none; }
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .about-image { max-width: 320px; margin: 0 auto; }
+    .offerings-grid { grid-template-columns: 1fr; }
+    .dates-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
+    .intro-values { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-logo">the mama <span>pod</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#offerings">Offerings</a></li>
+    <li><a href="#dates">Upcoming Dates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-arch"></div>
+  <div class="hero-arch-inner"></div>
+  <div class="sparkle sparkle-1"></div>
+  <div class="sparkle sparkle-2"></div>
+  <div class="sparkle sparkle-3"></div>
+  <div class="sparkle sparkle-4"></div>
+  <div class="sparkle sparkle-5"></div>
+  <div class="hero-content">
+    <div class="hero-tagline">Hypnobirthing® Educator & Doula</div>
+    <div class="hero-brand">
+      <span class="the">T H E</span>
+      <div class="mama">mama</div>
+      <span class="pod">POD</span>
+    </div>
+    <p class="hero-subtitle">Prepare for birth feeling calm, confident & empowered</p>
+    <a href="#dates" class="hero-cta">View Upcoming Courses</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="intro fade-in">
+  <div class="section-label">Welcome</div>
+  <h2>Through supportive education and guidance, birthing people can cultivate empowered, embodied birth experiences</h2>
+  <div class="intro-values">
+    <div class="value-item">
+      <span class="value-star">&#10022;</span>
+      <div class="value-word">calm</div>
+    </div>
+    <div class="value-item">
+      <span class="value-star">&#10022;</span>
+      <div class="value-word">confident</div>
+    </div>
+    <div class="value-item">
+      <span class="value-star">&#10022;</span>
+      <div class="value-word">empowered</div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="about-inner fade-in">
+    <div class="about-image">
+      <div class="img-frame">
+        <img src="images/mandalay.jpeg" alt="Mandalay Roberts — The Mama Pod">
+      </div>
+      <div class="accent-line"></div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">Meet Mandalay</div>
+      <h2>Guiding families into <em>transformative</em> new chapters</h2>
+      <p>Mandalay first stepped into birth work during a daily meditation practice in 2020, when she received a clear vision of women moving together through cat/cow in a prenatal yoga class. That moment sparked a calling to expand her work into the prenatal and birth space.</p>
+      <p>She went on to become a DONA-certified doula and a HypnoBirthing® educator. In her work, Mandalay has supported many couples through pregnancy and birth, centering breath, connection, and empowerment throughout their journeys.</p>
+      <p>With a bachelor's degree in Early Childhood Education from Northern Arizona University, she thoughtfully weaves her diverse educational background into her work with parents-to-be and new families.</p>
+      <div class="credentials">
+        <span class="credential">DONA-Certified Doula</span>
+        <span class="credential">HypnoBirthing® Educator</span>
+        <span class="credential">B.A. Early Childhood Ed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Offerings -->
+<section class="offerings" id="offerings">
+  <div class="fade-in">
+    <div class="section-label">Offerings</div>
+    <h2>How We Can Work Together</h2>
+    <p class="offerings-subtitle">Nurturing support through every stage of your birth journey</p>
+    <div class="offerings-grid">
+      <div class="offering-card">
+        <span class="offering-icon">&#127769;</span>
+        <h3>HypnoBirthing® Course</h3>
+        <span class="tag">5-Week Series · Sundays</span>
+        <p>A nurturing 5-week hypnobirthing experience where you and your birth partner will learn deep relaxation techniques, breathing methods, visualization, and tools to approach birth with calm confidence. Hosted at Mother Nurture Wellness in Culver City.</p>
+      </div>
+      <div class="offering-card">
+        <span class="offering-icon">&#129494;&#8205;&#9792;&#65039;</span>
+        <h3>Prenatal Yoga</h3>
+        <span class="tag">Coming Soon · Angelino Heights</span>
+        <p>Connect with your changing body and growing baby through gentle, intentional movement. Classes designed to build strength, flexibility, and community among expecting mothers. Stay tuned for class schedule details.</p>
+      </div>
+      <div class="offering-card">
+        <span class="offering-icon">&#129309;</span>
+        <h3>Birth Doula Support</h3>
+        <span class="tag">Personalized Packages</span>
+        <p>Continuous emotional, physical, and informational support throughout your pregnancy, labor, and early postpartum. Mandalay works closely with you and your birth team to honor your birth preferences.</p>
+      </div>
+      <div class="offering-card">
+        <span class="offering-icon">&#128155;</span>
+        <h3>Private HypnoBirthing®</h3>
+        <span class="tag">Flexible Scheduling</span>
+        <p>Prefer a personalized experience? Private sessions offer the full HypnoBirthing® curriculum tailored to your unique needs, schedule, and birth vision. Perfect for couples wanting one-on-one attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Dates -->
+<section class="dates" id="dates">
+  <div class="fade-in">
+    <div class="section-label">Upcoming Sessions</div>
+    <h2>HypnoBirthing® Course Dates</h2>
+    <p class="dates-note">Limited spots available — Sundays at Mother Nurture Wellness</p>
+    <div class="dates-grid">
+      <div class="date-card active">
+        <div class="session-label">Session I</div>
+        <div class="dates-range">May 17 —<br>June 14, 2026</div>
+        <div class="day">Sundays</div>
+        <div class="location">Mother Nurture Wellness<br>Culver City, CA</div>
+      </div>
+      <div class="date-card">
+        <div class="session-label">Session II</div>
+        <div class="dates-range">July 12 —<br>August 9, 2026</div>
+        <div class="day">Sundays</div>
+        <div class="location">Mother Nurture Wellness<br>Culver City, CA</div>
+      </div>
+      <div class="date-card">
+        <div class="session-label">More Soon</div>
+        <div class="dates-range">Fall 2026<br>Dates TBA</div>
+        <div class="day">Sundays</div>
+        <div class="location">Email to join the<br>waitlist</div>
+      </div>
+    </div>
+    <div class="dates-cta">
+      <a href="mailto:info@themamapod.com?subject=HypnoBirthing%20Course%20Inquiry">Reserve Your Spot</a>
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="philosophy">
+  <div class="fade-in">
+    <div class="section-label">Philosophy</div>
+    <blockquote>"Through supportive education and guidance, birthing people can cultivate empowered, embodied birth experiences — creating less space for trauma and more space for beautiful, mother–baby-centered birth stories."</blockquote>
+    <div class="attribution">— Mandalay Roberts</div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="fade-in">
+    <div class="section-label">Get in Touch</div>
+    <h2>Ready to Begin?</h2>
+    <p>Whether you're exploring HypnoBirthing®, looking for doula support, or simply want to learn more — I'd love to hear from you.</p>
+    <a href="mailto:info@themamapod.com" class="contact-email">info@themamapod.com</a>
+    <div class="contact-location">
+      <h3>Mother Nurture Wellness</h3>
+      <address>
+        5855 Green Valley Circle, Suite 200<br>
+        Culver City, CA 90230
+      </address>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">mama <span>pod</span></div>
+  <p>&copy; 2026 The Mama Pod. All rights reserved.</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
