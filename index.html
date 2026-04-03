@@ -68,10 +68,16 @@
     backdrop-filter: blur(12px);
     box-shadow: 0 1px 20px rgba(92, 74, 50, 0.06);
   }
-  .nav-logo img {
-    height: 40px;
-    width: auto;
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown);
+    text-decoration: none;
   }
+  .nav-logo span { color: var(--gold); }
   .nav-links {
     display: flex; gap: 2.2rem; list-style: none;
   }
@@ -683,7 +689,7 @@
     border-top: 1px solid var(--cream-dark);
   }
   .footer-logo img {
-    height: 60px;
+    height: 80px;
     width: auto;
     margin-bottom: 0.3rem;
   }
@@ -767,7 +773,7 @@
 
 <!-- Navigation -->
 <nav id="navbar" aria-label="Main">
-  <a href="#" class="nav-logo"><img src="images/logo.png" alt="The Mama Pod" width="160" height="160"></a>
+  <a href="#" class="nav-logo">the mama <span>pod</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#offerings">Offerings</a></li>
