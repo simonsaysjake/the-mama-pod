@@ -721,6 +721,16 @@
     opacity: 1;
     transform: translateY(0);
   }
+  /* Fallback: force visibility after animation window in case observer never fires (mobile Safari) */
+  @keyframes fade-in-fallback {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    animation: fade-in-fallback 0.8s ease 2s forwards;
+  }
+  .fade-in.visible {
+    animation: none;
+  }
 
   /* ===== REDUCED MOTION ===== */
   @media (prefers-reduced-motion: reduce) {
@@ -826,7 +836,7 @@
   <div class="about-inner fade-in">
     <div class="about-image">
       <div class="img-frame">
-        <img src="images/mandalay.jpeg" alt="Mandalay Roberts — The Mama Pod" width="900" height="1200" loading="lazy">
+        <img src="images/mandalay.jpeg" alt="Mandalay Roberts — The Mama Pod" width="900" height="1200" loading="eager">
       </div>
       <div class="accent-line"></div>
     </div>
