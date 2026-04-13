@@ -121,16 +121,23 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(180deg, var(--white) 0%, var(--cream) 40%, var(--cream-dark) 100%);
+    background: var(--cream);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('images/hero-bg.webp') center/cover no-repeat;
+    opacity: 0.18;
+    pointer-events: none;
   }
   .hero::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     background:
+      linear-gradient(180deg, rgba(247, 242, 234, 0.6) 0%, rgba(247, 242, 234, 0.3) 50%, rgba(247, 242, 234, 0.7) 100%),
       radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(181, 196, 168, 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(232, 213, 196, 0.15) 0%, transparent 60%);
+      radial-gradient(ellipse at 80% 20%, rgba(181, 196, 168, 0.1) 0%, transparent 50%);
     pointer-events: none;
+    z-index: 1;
   }
   .hero-arch {
     position: absolute;
@@ -140,6 +147,7 @@
     border: 1.5px solid rgba(212, 168, 67, 0.2);
     border-radius: 210px 210px 0 0;
     pointer-events: none;
+    z-index: 2;
   }
   .hero-arch-inner {
     position: absolute;
@@ -149,6 +157,7 @@
     border: 1px solid rgba(212, 168, 67, 0.1);
     border-radius: 190px 190px 0 0;
     pointer-events: none;
+    z-index: 2;
   }
   .hero-content {
     position: relative; z-index: 2;
@@ -568,24 +577,57 @@
     position: relative;
     overflow: hidden;
   }
+  .philosophy-bg {
+    position: absolute; inset: 0;
+    background: url('images/contact-bg.webp') center/cover no-repeat;
+    opacity: 0.35;
+    pointer-events: none;
+  }
   .philosophy::before {
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse at 30% 50%, rgba(212, 168, 67, 0.1) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 50%, rgba(181, 196, 168, 0.05) 0%, transparent 60%);
+      linear-gradient(180deg, rgba(92, 74, 50, 0.75) 0%, rgba(92, 74, 50, 0.6) 50%, rgba(92, 74, 50, 0.75) 100%);
+    z-index: 1;
+  }
+  .philosophy-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: center;
+    text-align: left;
+  }
+  .philosophy-image {
+    position: relative;
+  }
+  .philosophy-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  }
+  .philosophy-image::after {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px; right: -12px; bottom: -12px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    opacity: 0.3;
+    z-index: -1;
   }
   .philosophy .section-label { color: var(--gold-light); }
   .philosophy blockquote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
     font-weight: 300;
     font-style: italic;
-    max-width: 700px;
-    margin: 0 auto;
+    margin: 0;
     line-height: 1.5;
-    position: relative;
-    z-index: 1;
     color: var(--cream);
   }
   .philosophy .attribution {
@@ -595,7 +637,6 @@
     text-transform: uppercase;
     color: var(--gold-light);
     font-weight: 500;
-    position: relative; z-index: 1;
   }
 
   /* ===== CONTACT ===== */
@@ -763,6 +804,8 @@
     }
     .about-image { max-width: 320px; margin: 0 auto; }
     .offerings-grid { grid-template-columns: 1fr; }
+    .philosophy-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .philosophy-image { max-width: 320px; margin: 0 auto; }
     .dates-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
     .intro-values { gap: 2rem; }
   }
@@ -788,6 +831,7 @@
 
 <!-- Hero -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-arch"></div>
   <div class="hero-arch-inner"></div>
   <div class="sparkle sparkle-1" aria-hidden="true">&#10022;</div>
@@ -924,10 +968,16 @@
 
 <!-- Philosophy -->
 <section class="philosophy">
-  <div class="fade-in">
-    <div class="section-label">Philosophy</div>
-    <blockquote>"Through supportive education and guidance, birthing people can cultivate empowered, embodied birth experiences — creating less space for trauma and more space for beautiful, mother–baby-centered birth stories."</blockquote>
-    <div class="attribution">— Mandalay Roberts</div>
+  <div class="philosophy-bg"></div>
+  <div class="philosophy-inner fade-in">
+    <div class="philosophy-image">
+      <img src="images/doula-belly.webp" alt="Hands forming a heart on a pregnant belly" loading="lazy" width="642" height="350">
+    </div>
+    <div>
+      <div class="section-label">Philosophy</div>
+      <blockquote>"Through supportive education and guidance, birthing people can cultivate empowered, embodied birth experiences — creating less space for trauma and more space for beautiful, mother–baby-centered birth stories."</blockquote>
+      <div class="attribution">— Mandalay Roberts</div>
+    </div>
   </div>
 </section>
 
