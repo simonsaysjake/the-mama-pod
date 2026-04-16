@@ -137,14 +137,15 @@
   .hero-bg {
     position: absolute; inset: 0;
     background: url('images/hero-bg.webp') center/cover no-repeat;
-    opacity: 0.35;
+    opacity: 0.18;
     pointer-events: none;
   }
   .hero::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     background:
-      linear-gradient(180deg, rgba(247, 242, 234, 0.4) 0%, rgba(247, 242, 234, 0.15) 50%, rgba(247, 242, 234, 0.5) 100%),
+      radial-gradient(ellipse 55% 55% at 50% 52%, rgba(247, 242, 234, 0.65) 0%, rgba(247, 242, 234, 0.25) 60%, rgba(247, 242, 234, 0) 100%),
+      linear-gradient(180deg, rgba(247, 242, 234, 0.5) 0%, rgba(247, 242, 234, 0.2) 50%, rgba(247, 242, 234, 0.55) 100%),
       radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 20%, rgba(181, 196, 168, 0.1) 0%, transparent 50%);
     pointer-events: none;
